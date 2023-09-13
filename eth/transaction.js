@@ -35,11 +35,13 @@ const send = async () => {
             gasPrice: gasPrice,
         };
 
+        // sign transaction
         const createTransaction = await web3.eth.accounts.signTransaction(
             transactionObject,
             accountFrom.privateKey
         );
 
+        // send signed transaction
         const createReceipt = await web3.eth.sendSignedTransaction(createTransaction.rawTransaction);
         console.log(`Transaction successful with hash: ${createReceipt.transactionHash}`);
     } catch (error) {
